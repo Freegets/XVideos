@@ -91,8 +91,8 @@
     <div class="container">
         <h1 id="header">GET THE PASSWORD FOR THE XVIDEO NOW!</h1>
         <input type="text" id="password" readonly>
-        <button class="button" onclick="generatePassword()">Generate Password</button>
-        <button class="button" onclick="copyPassword()">Copy Password</button>
+        <button class="button" id="generateBtn">Generate Password</button>
+        <button class="button" id="copyBtn">Copy Password</button>
         <div id="notification">Password copied!</div>
     </div>
 
@@ -128,10 +128,11 @@
         const translation = translations[userLang] || translations.en;
 
         document.getElementById("header").textContent = translation.header;
-        document.querySelector(".button:nth-child(1)").textContent = translation.generatePassword;
-        document.querySelector(".button:nth-child(2)").textContent = translation.copyPassword;
+        document.getElementById("generateBtn").textContent = translation.generatePassword;
+        document.getElementById("copyBtn").textContent = translation.copyPassword;
         document.getElementById("notification").textContent = translation.passwordCopied;
 
+        // Генерация пароля
         function generatePassword() {
             const length = Math.floor(Math.random() * (17 - 15 + 1)) + 15;
             const charset = "~!@(0123456789~!@(abcdefghijklmn^&*_opqrstuvwxyz#$%)+0123456789-ABCDEFGHIJKLMN^&*_OPQRSTUVWXYZ^&*_0123456789#$%)+";
@@ -143,6 +144,7 @@
             document.getElementById("password").value = password;
         }
 
+        // Копирование пароля
         function copyPassword() {
             const passwordField = document.getElementById("password");
             if (passwordField.value) {
@@ -158,6 +160,10 @@
                 alert(translation.passwordCopied);
             }
         }
+
+        // Привязка событий к кнопкам
+        document.getElementById("generateBtn").addEventListener("click", generatePassword);
+        document.getElementById("copyBtn").addEventListener("click", copyPassword);
     </script>
 </body>
 </html>
