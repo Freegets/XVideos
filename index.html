@@ -26,6 +26,10 @@
             padding: 20px;
             box-sizing: border-box;
             position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
         }
 
         .video-container {
@@ -129,10 +133,13 @@
         @media (max-width: 480px) {
             #container {
                 padding: 5px;
+                justify-content: center;  /* Центрируем по вертикали */
+                height: 100vh; /* Высота контейнера 100% от высоты экрана */
             }
 
             .video-container {
                 margin-top: 20px;
+                margin-bottom: 30px; /* Добавляем отступ снизу для мобильных */
             }
 
             /* Увеличиваем размер шрифта для мобильных */
