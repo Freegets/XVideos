@@ -17,6 +17,7 @@
             align-items: center;
             justify-content: center;
             font-family: Arial, sans-serif;
+            background-color: #000; /* Темный фон для лучшего контраста */
         }
 
         #container {
@@ -27,22 +28,8 @@
             position: relative;
         }
 
-        #Html1, #Html3, #wb_Text1, #wb_Text2 {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        button {
-            padding: 10px 20px;
-            font-size: 16px;
-            cursor: pointer;
-            margin-top: 10px;
-            width: 80%;
-            max-width: 300px;
-        }
-
         .video-container {
-            margin-top: 120px;
+            margin-top: 40px;
             position: relative;
             text-align: center;
         }
@@ -50,11 +37,14 @@
         .video-container video {
             max-width: 100%;
             height: auto;
+            border: 2px solid #fff; /* Добавлена рамка для видео */
+            border-radius: 8px;    /* Скругленные углы */
         }
 
+        /* Позиционирование текста поверх видео */
         .video-overlay {
             position: absolute;
-            top: 0;
+            top: 10px;
             left: 50%;
             transform: translateX(-50%);
             width: 100%;
@@ -78,6 +68,7 @@
             border: 2px solid #000;
             border-radius: 5px;
             max-width: 200px;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
 
         #link-button:hover {
@@ -89,8 +80,22 @@
             font-size: 16px;
             font-weight: bold;
             text-align: center;
-            color: yellow; /* Цвет текста изменён на желтый */
+            color: yellow;
             margin: 15px 0;
+        }
+
+        a img {
+            display: block;
+            max-width: 100%;
+            height: auto;
+            margin: 20px auto;
+            border: 2px solid #fff; /* Белая рамка вокруг изображения */
+            border-radius: 8px;    /* Скругленные углы */
+            transition: transform 0.3s ease;
+        }
+
+        a img:hover {
+            transform: scale(1.05); /* Легкое увеличение при наведении */
         }
 
         @media (max-width: 768px) {
@@ -99,16 +104,7 @@
             }
 
             .video-container {
-                margin-top: 60px;
-            }
-
-            #Html1, #Html3, #wb_Text1, #wb_Text2 {
-                margin-bottom: 10px;
-            }
-
-            button {
-                font-size: 14px;
-                width: 90%;
+                margin-top: 30px;
             }
 
             .video-overlay {
@@ -118,6 +114,15 @@
             .info-text {
                 font-size: 14px;
             }
+
+            #link-button {
+                font-size: 14px;
+                padding: 8px 16px;
+            }
+
+            a img {
+                max-width: 90%;
+            }
         }
 
         @media (max-width: 480px) {
@@ -126,24 +131,24 @@
             }
 
             .video-container {
-                margin-top: 30px;
-            }
-
-            #Html1, #Html3, #wb_Text1, #wb_Text2 {
-                margin-bottom: 5px;
-            }
-
-            button {
-                font-size: 12px;
-                padding: 8px 16px;
+                margin-top: 20px;
             }
 
             .video-overlay {
-                font-size: 18px;
+                font-size: 16px;
             }
 
             .info-text {
                 font-size: 12px;
+            }
+
+            #link-button {
+                font-size: 12px;
+                padding: 6px 12px;
+            }
+
+            a img {
+                max-width: 85%;
             }
         }
     </style>
@@ -159,24 +164,21 @@
                 <source src="videos/Xvideo.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
-            
+
             <!-- Ссылка с изображением -->
             <a href="https://www1.affhone.fyi/click?pid=3749&offer_id=932&l=1732832271" target="_blank">
-                <img src="ai bot.png" alt="AI Bot" style="margin: 20px auto; display: block; max-width: 100%; height: auto;">
+                <img src="ai_bot.png" alt="AI Bot">
             </a>
-            
+
             <!-- Текст над кнопкой -->
             <div class="info-text">VIDEO SECTION IS AVAILABLE AFTER SIMPLE REGISTRATION WITHOUT E-MAIL CONFIRMATION</div>
-            
+
             <!-- Кнопка -->
             <a id="link-button" href="https://www1.affhone.fyi/click?pid=3749&offer_id=932&l=1732832271" target="_blank">
                 Join Now
             </a>
         </div>
     </div>
-
-    <!-- Остальной контент -->
-    <!-- ... Остальная часть вашего кода остается без изменений ... -->
 </div>
 </body>
 </html>
