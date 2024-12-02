@@ -1,169 +1,182 @@
-﻿<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Password Generator</title>
+    <title>freeteens</title>
+    <link href="trafors.css" rel="stylesheet">
+    <link href="index.css" rel="stylesheet">
     <style>
-        * {
+        body, html {
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-        }
-        body, html {
             width: 100%;
             height: 100%;
-            background-color: #000;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            color: #fff;
             font-family: Arial, sans-serif;
         }
-        .container {
-            text-align: center;
-            background: rgba(0, 0, 0, 0.7);
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-            width: 90%;
-            max-width: 400px;
-            margin-top: 20px;
-            color: #ddd;
-        }
-        h1 {
-            font-size: 1.8em;
-            margin-bottom: 20px;
-            color: #ffffff;
-        }
-        #password {
-            font-size: 1.4em;
-            font-weight: 400;
-            margin: 15px 0;
-            padding: 10px;
-            border: 1px solid #444;
-            background-color: rgba(255, 255, 255, 0.1);
-            color: #fff;
-            border-radius: 8px;
-            width: calc(100% - 22px);
-            box-sizing: border-box;
-            text-align: center;
-        }
-        .button {
-            margin: 10px;
-            padding: 12px 24px;
-            border: none;
-            border-radius: 8px;
-            background-color: #1a73e8;
-            color: #ffffff;
-            font-size: 1.1em;
-            font-weight: 600;
-            cursor: pointer;
-            transition: background-color 0.3s ease, transform 0.2s ease;
-        }
-        .button:hover {
-            background-color: #0c5ec7;
-            transform: translateY(-2px);
-        }
-        #notification {
-            display: none;
-            color: #4caf50;
-            margin: 15px 0;
-            font-size: 1.2em;
-            font-weight: 600;
-        }
-        .image-container {
+
+        #container {
+            max-width: 800px;
             width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-top: 20px;
+            padding: 20px;
+            box-sizing: border-box;
+            position: relative;
         }
-        .image-container img {
+
+        #Html1, #Html3, #wb_Text1, #wb_Text2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 10px;
+            width: 80%;
+            max-width: 300px;
+        }
+
+        .video-container {
+            margin-top: 120px;
+            position: relative;
+            text-align: center;
+        }
+
+        .video-container video {
             max-width: 100%;
-            max-height: 200px;
-            object-fit: contain;
+            height: auto;
+        }
+
+        .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            text-align: center;
+            color: yellow;
+            font-weight: bold;
+            font-size: 24px;
+            pointer-events: none;
+        }
+
+        #link-button {
+            display: block;
+            margin: 10px auto;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #ff0;
+            color: #000;
+            text-align: center;
+            text-decoration: none;
+            font-weight: bold;
+            border: 2px solid #000;
+            border-radius: 5px;
+            max-width: 200px;
+        }
+
+        #link-button:hover {
+            background-color: #ffc107;
+            color: #000;
+        }
+
+        .info-text {
+            font-size: 16px;
+            font-weight: bold;
+            text-align: center;
+            color: yellow; /* Цвет текста изменён на желтый */
+            margin: 15px 0;
+        }
+
+        @media (max-width: 768px) {
+            #container {
+                padding: 10px;
+            }
+
+            .video-container {
+                margin-top: 60px;
+            }
+
+            #Html1, #Html3, #wb_Text1, #wb_Text2 {
+                margin-bottom: 10px;
+            }
+
+            button {
+                font-size: 14px;
+                width: 90%;
+            }
+
+            .video-overlay {
+                font-size: 20px;
+            }
+
+            .info-text {
+                font-size: 14px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            #container {
+                padding: 5px;
+            }
+
+            .video-container {
+                margin-top: 30px;
+            }
+
+            #Html1, #Html3, #wb_Text1, #wb_Text2 {
+                margin-bottom: 5px;
+            }
+
+            button {
+                font-size: 12px;
+                padding: 8px 16px;
+            }
+
+            .video-overlay {
+                font-size: 18px;
+            }
+
+            .info-text {
+                font-size: 12px;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1 id="header">GET THE PASSWORD FOR THE XVIDEO NOW!</h1>
-        <input type="text" id="password" readonly>
-        <button class="button" id="generateBtn">Generate Password</button>
-        <button class="button" id="copyBtn">Copy Password</button>
-        <div id="notification">Password copied!</div>
+<div id="container">
+    <!-- Видео -->
+    <div id="Html4">
+        <div class="video-container">
+            <!-- Текст над видео -->
+            <div class="video-overlay">Adult Social Network</div>
+            <video controls>
+                <source src="videos/Xvideo.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            
+            <!-- Ссылка с изображением -->
+            <a href="https://www1.affhone.fyi/click?pid=3749&offer_id=932&l=1732832271" target="_blank">
+                <img src="ai bot.png" alt="AI Bot" style="margin: 20px auto; display: block; max-width: 100%; height: auto;">
+            </a>
+            
+            <!-- Текст над кнопкой -->
+            <div class="info-text">VIDEO SECTION IS AVAILABLE AFTER SIMPLE REGISTRATION WITHOUT E-MAIL CONFIRMATION</div>
+            
+            <!-- Кнопка -->
+            <a id="link-button" href="https://www1.affhone.fyi/click?pid=3749&offer_id=932&l=1732832271" target="_blank">
+                Join Now
+            </a>
+        </div>
     </div>
 
-    <div class="image-container">
-        <a href="https://avzqa.imitrkn.net/?utm_source=95373a9daf4cb6a2&s1=48854&s2=209775" target="_blank">
-            <img src="xvideo.png" alt="XVideo Image">
-        </a>
-    </div>
-
-    <script>
-        // Переводы текста на разные языки
-        const translations = {
-            en: { header: "GET THE PASSWORD FOR THE XVIDEO NOW!", generatePassword: "Generate Password", copyPassword: "Copy Password", passwordCopied: "Password copied!" },
-            es: { header: "¡OBTÉN LA CONTRASEÑA PARA EL XVIDEO AHORA!", generatePassword: "Generar contraseña", copyPassword: "Copiar contraseña", passwordCopied: "¡Contraseña copiada!" },
-            pt: { header: "OBTENHA A SENHA PARA O XVIDEO AGORA!", generatePassword: "Gerar senha", copyPassword: "Copiar senha", passwordCopied: "Senha copiada!" },
-            id: { header: "DAPATKAN KATA SANDI UNTUK XVIDEO SEKARANG!", generatePassword: "Buat Kata Sandi", copyPassword: "Salin Kata Sandi", passwordCopied: "Kata sandi disalin!" },
-            th: { header: "รับรหัสผ่านสำหรับ XVIDEO ทันที!", generatePassword: "สร้างรหัสผ่าน", copyPassword: "คัดลอกรหัสผ่าน", passwordCopied: "คัดลอกรหัสผ่านแล้ว!" },
-            it: { header: "OTTIENI LA PASSWORD PER XVIDEO ORA!", generatePassword: "Genera password", copyPassword: "Copia password", passwordCopied: "Password copiata!" },
-            de: { header: "HOLEN SIE DAS PASSWORT FÜR XVIDEO JETZT!", generatePassword: "Passwort generieren", copyPassword: "Passwort kopieren", passwordCopied: "Passwort kopiert!" },
-            fr: { header: "OBTENEZ LE MOT DE PASSE POUR XVIDEO MAINTENANT !", generatePassword: "Générer le mot de passe", copyPassword: "Copier le mot de passe", passwordCopied: "Mot de passe copié !" },
-            nl: { header: "KRIJG NU HET WACHTWOORD VOOR XVIDEO!", generatePassword: "Wachtwoord genereren", copyPassword: "Kopieer wachtwoord", passwordCopied: "Wachtwoord gekopieerd!" },
-            ph: { header: "KUNIN ANG PASSWORD PARA SA XVIDEO NGAYON!", generatePassword: "Gumawa ng Password", copyPassword: "Kopyahin ang Password", passwordCopied: "Naskopya ang password!" },
-            vn: { header: "NHẬN MẬT KHẨU CHO XVIDEO NGAY BÂY GIỜ!", generatePassword: "Tạo mật khẩu", copyPassword: "Sao chép mật khẩu", passwordCopied: "Đã sao chép mật khẩu!" },
-            my: { header: "DAPATKAN KATA LALUAN UNTUK XVIDEO SEKARANG!", generatePassword: "Hasilkan Kata Laluan", copyPassword: "Salin Kata Laluan", passwordCopied: "Kata laluan disalin!" },
-            ru: { header: "ПОЛУЧИТЕ ПАРОЛЬ ДЛЯ XVIDEO СЕЙЧАС!", generatePassword: "Создать пароль", copyPassword: "Скопировать пароль", passwordCopied: "Пароль скопирован!" },
-            hu: { header: "SZEREZZE MEG AZ XVIDEO JELSZAVÁT MOST!", generatePassword: "Jelszó generálása", copyPassword: "Jelszó másolása", passwordCopied: "Jelszó másolva!" },
-            bg: { header: "ПОЛУЧЕТЕ ПАРОЛАТА ЗА XVIDEO СЕГА!", generatePassword: "Генерирай парола", copyPassword: "Копирай парола", passwordCopied: "Паролата е копирана!" },
-            ar: { header: "احصل على كلمة المرور لـ XVIDEO الآن!", generatePassword: "إنشاء كلمة مرور", copyPassword: "نسخ كلمة المرور", passwordCopied: "تم نسخ كلمة المرور!" }
-        };
-
-        // Определение языка браузера и установка перевода
-        const userLang = navigator.language.slice(0, 2);
-        const translation = translations[userLang] || translations.en;
-
-        document.getElementById("header").textContent = translation.header;
-        document.getElementById("generateBtn").textContent = translation.generatePassword;
-        document.getElementById("copyBtn").textContent = translation.copyPassword;
-        document.getElementById("notification").textContent = translation.passwordCopied;
-
-        // Генерация пароля
-        function generatePassword() {
-            const length = Math.floor(Math.random() * (17 - 15 + 1)) + 15;
-            const charset = "~!@(0123456789~!@(abcdefghijklmn^&*_opqrstuvwxyz#$%)+0123456789-ABCDEFGHIJKLMN^&*_OPQRSTUVWXYZ^&*_0123456789#$%)+";
-            let password = "";
-            for (let i = 0; i < length; i++) {
-                const randomIndex = Math.floor(Math.random() * charset.length);
-                password += charset[randomIndex];
-            }
-            document.getElementById("password").value = password;
-        }
-
-        // Копирование пароля
-        function copyPassword() {
-            const passwordField = document.getElementById("password");
-            if (passwordField.value) {
-                passwordField.select();
-                document.execCommand("copy");
-
-                const notification = document.getElementById("notification");
-                notification.style.display = "block";
-                setTimeout(() => {
-                    notification.style.display = "none";
-                }, 2000); // Show notification for 2 seconds
-            } else {
-                alert(translation.passwordCopied);
-            }
-        }
-
-        // Привязка событий к кнопкам
-        document.getElementById("generateBtn").addEventListener("click", generatePassword);
-        document.getElementById("copyBtn").addEventListener("click", copyPassword);
-    </script>
+    <!-- Остальной контент -->
+    <!-- ... Остальная часть вашего кода остается без изменений ... -->
+</div>
 </body>
 </html>
