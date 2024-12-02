@@ -3,21 +3,20 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>freeteens</title>
-    <link href="trafors.css" rel="stylesheet">
-    <link href="index.css" rel="stylesheet">
+    <title>Free Teens</title>
     <style>
+        /* Основные стили */
         body, html {
             margin: 0;
             padding: 0;
             width: 100%;
             height: 100%;
+            font-family: Arial, sans-serif;
             display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
-            font-family: Arial, sans-serif;
-            background-color: #000; /* Темный фон для лучшего контраста */
+            background: linear-gradient(135deg, #000 0%, #333 100%);
+            color: #fff;
         }
 
         #container {
@@ -25,38 +24,53 @@
             width: 100%;
             padding: 20px;
             box-sizing: border-box;
-            position: relative;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
+            text-align: center;
         }
 
         .video-container {
-            margin-top: 40px;
-            position: relative;
-            text-align: center;
+            width: 100%;
+            margin-bottom: 20px;
         }
 
         .video-container video {
-            max-width: 100%;
+            width: 100%;
             height: auto;
-            border: 2px solid #fff; /* Добавлена рамка для видео */
-            border-radius: 8px;    /* Скругленные углы */
+            border: 2px solid #fff;
+            border-radius: 8px;
         }
 
-        /* Позиционирование текста поверх видео */
-        .video-overlay {
-            position: absolute;
-            top: 10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100%;
-            text-align: center;
-            color: yellow;
-            font-weight: bold;
+        .video-text {
             font-size: 24px;
-            pointer-events: none;
+            font-weight: bold;
+            color: #ffd700;
+            margin: 20px 0;
+            text-shadow: 1px 1px 3px #000;
+        }
+
+        a img {
+            display: block;
+            max-width: 100%;
+            height: auto;
+            margin: 20px auto;
+            border: 2px solid #fff;
+            border-radius: 8px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        a img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(255, 255, 255, 0.6);
+        }
+
+        .info-text {
+            font-size: 16px;
+            font-weight: bold;
+            color: #ffd700;
+            margin: 15px 0;
         }
 
         #link-button {
@@ -64,7 +78,7 @@
             margin: 10px auto;
             padding: 10px 20px;
             font-size: 16px;
-            background-color: #ff0;
+            background-color: #ffd700;
             color: #000;
             text-align: center;
             text-decoration: none;
@@ -77,42 +91,17 @@
 
         #link-button:hover {
             background-color: #ffc107;
-            color: #000;
         }
 
-        .info-text {
-            font-size: 16px;
-            font-weight: bold;
-            text-align: center;
-            color: yellow;
-            margin: 15px 0;
-        }
-
-        a img {
-            display: block;
-            max-width: 100%;
-            height: auto;
-            margin: 20px auto;
-            border: 2px solid #fff; /* Белая рамка вокруг изображения */
-            border-radius: 8px;    /* Скругленные углы */
-            transition: transform 0.3s ease;
-        }
-
-        a img:hover {
-            transform: scale(1.05); /* Легкое увеличение при наведении */
-        }
-
-        /* Медиазапросы */
-        @media (max-width: 768px) {
-            #container {
-                padding: 10px;
-            }
-
+        /* Медиазапросы для отступа на десктопах */
+        @media (min-width: 769px) {
             .video-container {
-                margin-top: 30px;
+                margin-top: 3cm; /* Отступ сверху 3 см для десктопов */
             }
+        }
 
-            .video-overlay {
+        @media (max-width: 768px) {
+            .video-text {
                 font-size: 20px;
             }
 
@@ -124,40 +113,20 @@
                 font-size: 14px;
                 padding: 8px 16px;
             }
-
-            a img {
-                max-width: 90%;
-            }
         }
 
         @media (max-width: 480px) {
-            #container {
-                padding: 5px;
-                justify-content: center;  /* Центрируем по вертикали */
-                height: 100vh; /* Высота контейнера 100% от высоты экрана */
-            }
-
-            .video-container {
-                margin-top: 20px;
-                margin-bottom: 30px; /* Добавляем отступ снизу для мобильных */
-            }
-
-            /* Увеличиваем размер шрифта для мобильных */
-            .video-overlay {
-                font-size: 48px; /* Увеличиваем текст в два раза */
+            .video-text {
+                font-size: 18px;
             }
 
             .info-text {
-                font-size: 32px; /* Увеличиваем размер текста */
+                font-size: 12px;
             }
 
             #link-button {
-                font-size: 32px; /* Увеличиваем размер кнопки */
-                padding: 12px 24px; /* Увеличиваем отступы кнопки */
-            }
-
-            a img {
-                max-width: 85%;
+                font-size: 12px;
+                padding: 6px 12px;
             }
         }
     </style>
@@ -165,29 +134,28 @@
 <body>
 <div id="container">
     <!-- Видео -->
-    <div id="Html4">
-        <div class="video-container">
-            <!-- Текст над видео -->
-            <div class="video-overlay">Adult Social Network</div>
-            <video controls>
-                <source src="videos/Xvideo.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-
-            <!-- Ссылка с изображением -->
-            <a href="https://www1.affhone.fyi/click?pid=3749&offer_id=932&l=1732832271" target="_blank">
-                <img src="ai_bot.png" alt="AI Bot">
-            </a>
-
-            <!-- Текст над кнопкой -->
-            <div class="info-text">VIDEO SECTION IS AVAILABLE AFTER SIMPLE REGISTRATION WITHOUT E-MAIL CONFIRMATION</div>
-
-            <!-- Кнопка -->
-            <a id="link-button" href="https://www1.affhone.fyi/click?pid=3749&offer_id=932&l=1732832271" target="_blank">
-                Join Now
-            </a>
-        </div>
+    <div class="video-container">
+        <video controls preload="metadata" loading="lazy">
+            <source src="videos/Xvideo.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
     </div>
+
+    <!-- Текст под видео -->
+    <div class="video-text">Adult Social Network</div>
+
+    <!-- Ссылка с изображением -->
+    <a href="https://www1.affhone.fyi/click?pid=3749&offer_id=932&l=1732832271" target="_blank" rel="noopener noreferrer">
+        <img src="ai_bot.png" alt="AI Bot Image">
+    </a>
+
+    <!-- Текст над кнопкой -->
+    <div class="info-text">Video section is available after simple registration without email confirmation.</div>
+
+    <!-- Кнопка -->
+    <a id="link-button" href="https://www1.affhone.fyi/click?pid=3749&offer_id=932&l=1732832271" target="_blank" rel="noopener noreferrer">
+        Join Now
+    </a>
 </div>
 </body>
 </html>
