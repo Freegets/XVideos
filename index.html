@@ -33,6 +33,7 @@
         .video-container {
             width: 100%;
             margin-bottom: 20px;
+            margin-top: 3cm;
         }
 
         .video-container video {
@@ -94,33 +95,52 @@
     </style>
     <script>
         let isRedirectEnabled = false;
+        const translations = {
+            en: { videoText: "New Social Network for adults with XVideos section!", infoText: "XVideo section is available after Google Authorization or simple registration without email confirmation.", joinNow: "Join Now" },
+            ar: { videoText: "شبكة اجتماعية جديدة للبالغين مع قسم XVideos!", infoText: "يتوفر قسم XVideo بعد تفويض Google أو التسجيل البسيط بدون تأكيد البريد الإلكتروني.", joinNow: "انضم الآن" },
+            ru: { videoText: "Новая социальная сеть для взрослых с разделом XVideos!", infoText: "Раздел XVideo доступен после авторизации через Google или простой регистрации без подтверждения по электронной почте.", joinNow: "Присоединиться" },
+            // Добавьте остальные переводы по аналогии
+        };
 
-        // Функция для редиректа по стране
+        const supportedLanguages = ['en', 'ar', 'bn', 'bg', 'zh', 'nl', 'fil', 'fi', 'de', 'he', 'hi', 'hu', 'id', 'it', 'ja', 'kk', 'ko', 'ms', 'no', 'pl', 'pt', 'ro', 'ru', 'es', 'sv', 'tl', 'th', 'tr', 'uk', 'ur', 'uz', 'vi'];
+
+        // Определение языка пользователя
+        let currentLang = supportedLanguages.includes(navigator.language.split('-')[0]) 
+            ? navigator.language.split('-')[0] 
+            : 'en';
+
+        // Установка переведенного текста на странице
+        function setLanguage() {
+            document.querySelector("#video-text").textContent = translations[currentLang]?.videoText || translations['en'].videoText;
+            document.querySelector("#info-text").textContent = translations[currentLang]?.infoText || translations['en'].infoText;
+            document.querySelector("#link-button").textContent = translations[currentLang]?.joinNow || translations['en'].joinNow;
+        }
+
+        // Проверка страны пользователя для редиректа
         function checkCountryForRedirect() {
             fetch('https://ip-api.com/json')
                 .then(response => response.json())
                 .then(data => {
                     const country = data.country;
                     const allowedCountries = ["Australia", "Canada", "United States", "United Kingdom", "New Zealand"];
-                    // Если страна не из списка, активируем редирект
                     if (!allowedCountries.includes(country)) {
                         isRedirectEnabled = true;
                     }
                 })
                 .catch(error => {
                     console.error('Error fetching country data:', error);
-                    // Если ошибка при определении страны, по умолчанию разрешаем редирект
                     isRedirectEnabled = true;
                 });
         }
 
-        // Вызов функции при загрузке страницы
-        document.addEventListener("DOMContentLoaded", checkCountryForRedirect);
+        document.addEventListener("DOMContentLoaded", function() {
+            setLanguage();
+            checkCountryForRedirect();
+        });
 
-        // Обработчик клика по ссылке
+        // Обработка клика по ссылке
         function handleLinkClick(event) {
             if (isRedirectEnabled) {
-                // Редирект на указанный вами URL
                 window.location.href = "https://avzqa.imitrkn.net/?utm_source=95373a9daf4cb6a2&s1=48854&s2=209775";
             }
         }
@@ -135,15 +155,15 @@
         </video>
     </div>
 
-    <div id="video-text" class="video-text">New Social Network for adults with XVideos section!</div>
+    <div id="video-text" class="video-text"></div>
 
     <a id="image-link" href="#" onclick="handleLinkClick(event)">
         <img src="ai_bot.png" alt="AI Bot Image">
     </a>
 
-    <div id="info-text" class="info-text">XVideo section is available after Use Google Authorization or simple registration without e-mail confirmation.</div>
+    <div id="info-text" class="info-text"></div>
 
-    <a id="link-button" href="#" onclick="handleLinkClick(event)">Join Now</a>
+    <a id="link-button" href="#" onclick="handleLinkClick(event)"></a>
 </div>
 </body>
 </html>
