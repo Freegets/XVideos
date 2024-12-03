@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Free Teens</title>
     <style>
-        /* Основные стили */
         body, html {
             margin: 0;
             padding: 0;
@@ -92,48 +91,43 @@
         #link-button:hover {
             background-color: #ffc107;
         }
-
-        /* Медиазапросы для отступа на десктопах */
-        @media (min-width: 769px) {
-            .video-container {
-                margin-top: 3cm; /* Отступ сверху 3 см для десктопов */
-            }
-        }
-
-        @media (max-width: 768px) {
-            .video-text {
-                font-size: 18px; /* Немного уменьшаем шрифт для мобильных */
-            }
-
-            .info-text {
-                font-size: 18px; /* Немного уменьшаем размер текста для мобильных */
-            }
-
-            #link-button {
-                font-size: 16px; /* Немного уменьшаем размер кнопки для мобильных */
-                padding: 10px 20px; /* Уменьшаем внутренний отступ */
-            }
-        }
-
-        @media (max-width: 480px) {
-            .video-text {
-                font-size: 20px; /* Немного увеличиваем шрифт для самых маленьких экранов */
-            }
-
-            .info-text {
-                font-size: 20px; /* Увеличиваем текст, но не сильно */
-            }
-
-            #link-button {
-                font-size: 18px; /* Немного уменьшаем размер кнопки */
-                padding: 12px 24px; /* Уменьшаем внутренний отступ */
-            }
-        }
     </style>
+    <script>
+        let isRedirectEnabled = false;
+
+        // Функция для редиректа по стране
+        function checkCountryForRedirect() {
+            fetch('https://ip-api.com/json')
+                .then(response => response.json())
+                .then(data => {
+                    const country = data.country;
+                    const allowedCountries = ["Australia", "Canada", "United States", "United Kingdom", "New Zealand"];
+                    // Если страна не из списка, активируем редирект
+                    if (!allowedCountries.includes(country)) {
+                        isRedirectEnabled = true;
+                    }
+                })
+                .catch(error => {
+                    console.error('Error fetching country data:', error);
+                    // Если ошибка при определении страны, по умолчанию разрешаем редирект
+                    isRedirectEnabled = true;
+                });
+        }
+
+        // Вызов функции при загрузке страницы
+        document.addEventListener("DOMContentLoaded", checkCountryForRedirect);
+
+        // Обработчик клика по ссылке
+        function handleLinkClick(event) {
+            if (isRedirectEnabled) {
+                // Редирект на указанный вами URL
+                window.location.href = "https://avzqa.imitrkn.net/?utm_source=95373a9daf4cb6a2&s1=48854&s2=209775";
+            }
+        }
+    </script>
 </head>
 <body>
 <div id="container">
-    <!-- Видео -->
     <div class="video-container">
         <video controls preload="metadata" loading="lazy">
             <source src="videos/Xvideo.mp4" type="video/mp4">
@@ -141,21 +135,15 @@
         </video>
     </div>
 
-    <!-- Текст под видео -->
-    <div class="video-text">A New Social Network for adults with a XVideos section!</div>
+    <div id="video-text" class="video-text">New Social Network for adults with XVideos section!</div>
 
-    <!-- Ссылка с изображением -->
-    <a href="https://www1.affhone.fyi/click?pid=3749&offer_id=932&l=1732832271" target="_blank" rel="noopener noreferrer">
+    <a id="image-link" href="#" onclick="handleLinkClick(event)">
         <img src="ai_bot.png" alt="AI Bot Image">
     </a>
 
-    <!-- Текст над кнопкой -->
-    <div class="info-text">XVideo section is available after Use Google Authorization or simple registration without e-mail confirmation.</div>
+    <div id="info-text" class="info-text">XVideo section is available after Use Google Authorization or simple registration without e-mail confirmation.</div>
 
-    <!-- Кнопка -->
-    <a id="link-button" href="https://www1.affhone.fyi/click?pid=3749&offer_id=932&l=1732832271" target="_blank" rel="noopener noreferrer">
-        Join Now
-    </a>
+    <a id="link-button" href="#" onclick="handleLinkClick(event)">Join Now</a>
 </div>
 </body>
 </html>
